@@ -1,0 +1,63 @@
+void test()
+{
+	// 	system_user_rec = System_Users[System_Email == zoho.loginuserid];
+	// 	// 	info system_user_rec;
+	// 	// 	info system_user_rec.System_Email;
+	// 	dp = Map();
+	// 	dp.put("authorization","Bearer pat-na1-07cc8a83-e8b8-4d4d-b438-56349b468fb1");
+	// 	Data = invokeurl
+	// 	[
+	// 		url :"https://api.hubapi.com/crm/v3/objects/Deals?limit=10&archived=false"
+	// 		type :GET
+	// 		headers:dp
+	// 	];
+	// 	// 		info Data;
+	// 	Results = Data.get("results");
+	// 	for each  Rec in Results
+	// 	{
+	// 		// 			info Rec;
+	// 		Business_Name = Rec.get("properties").get("dealname");
+	// 		create_record = insert into Add_Customer
+	// 		[
+	// 			Added_User=zoho.loginuser
+	// 			Business_Accounts_Contact_Name=Business_Name
+	// 		];
+	// 		info create_record;
+	// 	} 
+	//////Create Invoice   //////////////////
+	/*
+	task = Add_Task[Job_No == 1006];
+	info task;
+	job = Add_Job[Job_Number == 1006];
+	customerid = job.Customer_Name;
+	info customerid;
+	contact = Add_Customer[ID == customerid];
+	res = insert into Invoices
+	[
+		Job_Number=task.Job_Record_ID
+		Contact=job.Customer_Name
+		Added_User=zoho.loginuser
+		Add_Task=task.ID
+	];
+	info "res";
+	info res;
+	*/
+	///////////END of Code/////////////
+	rec = zoho.creator.getRecordById("jobsitehire","copy-of-jsh","Add_Customer_Report",13164000004807465,"creator");
+	info rec;
+	// 	zoho.creator.getRecordById(<STRING>, <STRING>, <STRING>, <BIGINT>, <STRING>)
+	// String ownerName,
+	// String appLinkName,
+	// String reportLinkName,
+	// Bigint recordId,
+	// String connection_linkname
+	// 	res = insert into Invoices
+	// [
+	// // 	Job_Number=input.Job_No
+	// 	Invoice_Owner=zoho.loginuser
+	// 	Added_User=zoho.loginuser
+	// 	Phone_Number=input.Customer
+	// 	Stage="Draft"
+	// ];
+	// info res;
+}
