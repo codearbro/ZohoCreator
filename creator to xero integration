@@ -1,0 +1,64 @@
+
+void SendToXero()
+{
+	/*
+	refresh_token = "T0BK1D8XaUtAINP5AbPmmFe-nY1teqgQUOdTSQVaM";
+	data = Map();
+	data.put("grant_type","refresh_token");
+	data.put("refresh_token",refresh_token);
+	data.put("client_id","79F992067AAF4188B54");
+	data.put("client_secret","AptJSJBOw6FoljyCFhVCwt4gXpk");
+	headers = Map();
+	headers.put("grant_type","refresh_token");
+	headers.put("Content-Type","application/json");
+	res = invokeurl
+	[
+		url :"https://identity.xero.com/connect/token?="
+		type :POST
+		parameters:data
+		headers:headers
+	];
+	access_token = res.get("access_token");
+	refresh_token = res.get("refresh_token");
+	*/
+	
+	client_id = "88C9D773695E449C9C4039B11D03B0";
+client_secret = "r1FC2jCiS0_1I6NZlIZiWmxUx1vHhAVwERCqSa7a4Na";
+scopes = "accounting.transactions accounting.transactions.read accounting.reports.read accounting.reports.tenninetynine.read accounting.budgets.read accounting.journals.read accounting.settings accounting.settings.read accounting.contacts accounting.contacts.read accounting.attachments accounting.attachments.read assets files files.read payroll.employees payroll.employees.read payroll.payruns payroll.payruns.read payroll.payslip payroll.payslip.read payroll.settings payroll.settings.read payroll.timesheets payroll.timesheets.read projects projects.read";
+
+// Construct the Authorization header value
+auth_header_value = "Basic " + zoho.encryption.base64Encode(client_id + ":" + client_secret);
+
+// Construct the request body
+data = {
+    "grant_type": "client_credentials",
+    "scope": scopes
+};
+
+// Construct the headers
+headers = {
+    "Authorization": auth_header_value,
+    "Content-Type": "application/x-www-form-urlencoded"
+};
+
+// Make the POST request
+response = postUrl("https://identity.xero.com/connect/token", data, headers);
+
+// Print the response
+access_token = response.get("access_token");
+info access_token;
+	data = {"Type":"ACCREC","Contact":{"ContactID":"8de57677-2325-4049-99ef-77c072"},"Date":"/Date(1518685950940+0000)/","DueDate":"/Date(1518685950940+0000)/","DateString":"2009-05-27T00:00:00","DueDateString":"2009-06-06T00:00:00","LineAmountTypes":"Exclusive","LineItems":{{"Description":"Consulting services as agreed (20% off standard rate)","Quantity":"10","UnitAmount":"100.00","AccountCode":"200","DiscountRate":"20"}}};
+	headers = Map();
+	headers.put("xero-tenant-id","580c7fc4-139f-4c02-8268-4fef5a2dedb6");
+	headers.put("Authorization","Bearer " + access_token);
+	headers.put("Accept","application/json");
+	headers.put("Content-Type","application/json");
+	response = invokeurl
+	[
+		url :"https://api.xero.com/api.xro/2.0/Invoices"
+		type :POST
+		parameters:data.tostring()
+		headers:headers
+	];
+	info response;
+}
