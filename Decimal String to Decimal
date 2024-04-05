@@ -1,0 +1,16 @@
+void TestCBS()
+{
+//This is for long decimal points digits string.
+//data = Toilet_Servicing_Route1[ID == 13164000004906256];
+long  = "78.121233244343232";
+lng = long.indexOf(".")+6;
+info long;
+info lng;
+new = long.left(lng+1);
+info new;
+mnp =  new.toDecimal();
+info mnp;
+// info  (0.0 + long) / 100;
+// info long.toDecimal();
+// info lat.toDecimal();
+}
